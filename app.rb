@@ -18,17 +18,21 @@ def bmi_calc height,weight,sys
   if sys == "m"
     result = weight.to_f / ((height.to_f/100) ** 2)
     puts "The result is #{result}"
-
   elsif sys == "i"
     result = 703 * weight.to_f / (height.to_f ** 2)
     puts "The result is #{result}"
   end
 end
 
+def trip_calc dist, fuel_ef, cpg, speed
+  time = dist.to_f/speed.to_f
+  cost = (dist.to_f/fuel_ef.to_f) * cpg.to_f
+  puts "Your journey will take #{time} hours and will cost £#{cost}"
+end
 def calc
   puts "Welcome to Ruby Calculator!"
-  puts "Would you like to use our Basic, Advanced or BMI Calculator?"
-  puts "Type b for basic, a for advanced, bmi for bmi"
+  puts "Would you like to use our Basic, Advanced, BMI or Trip Calculator?"
+  puts "Type b for basic, a for advanced, bmi for bmi, t for trip:"
   choice = gets.chomp
   if choice == "b"
     puts "You are now in the Basic Calculator. Please type the first number you'd like to operate on:"
@@ -70,8 +74,19 @@ def calc
       weight = gets.chomp
       bmi_calc height,weight, sys
     end
+  elsif choice == "t"
+    puts "You are now in the Trip Calculator. Please type the distance(miles) you are travelling:"
+    dist = gets.chomp
+    puts "Please type the fuel efficency (miles per gallon) of your vehicle:"
+    fuel_ef = gets.chomp
+    puts "Please type the cost per gallon of your vehicle:"
+    cpg = gets.chomp
+    puts "Please type the speed(mph) you will be travelling at:"
+    speed = gets.chomp
+    trip_calc dist, fuel_ef, cpg, speed
   end
 
 end
+
 
 calc
