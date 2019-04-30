@@ -16,7 +16,7 @@ end
 
 def bmi_calc height,weight,sys
   if sys == "m"
-    result = height.to_f / (weight.to_f ** 2)*100
+    result = weight.to_f / ((height.to_f/100) ** 2)
     puts "The result is #{result}"
 
   elsif sys == "i"
@@ -52,6 +52,23 @@ def calc
       puts "Please type the power you'd like to raise it to:"
       n2 = gets.chomp
       adv_calc op,n1,n2
+    end
+  elsif choice == "bmi"
+    puts "You are now in the BMI Calculator. Would you like to use Metric or Imperial units?"
+    puts "Type m for metric, or i for Imperial:"
+    sys = gets.chomp
+    if sys == "m"
+      puts "Please type your height in cm:"
+      height = gets.chomp
+      puts "Please type your weight in kg:"
+      weight = gets.chomp
+      bmi_calc height,weight,sys
+    elsif sys == "i"
+      puts "Please type your height in inches:"
+      height = gets.chomp
+      puts "Please type your weight in pounds(Ibs)"
+      weight = gets.chomp
+      bmi_calc height,weight, sys
     end
   end
 
