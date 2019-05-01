@@ -25,9 +25,16 @@ def bmi_calc height,weight,sys
 end
 
 def trip_calc dist, fuel_ef, cpg, speed
-  time = dist.to_f/speed.to_f
-  cost = (dist.to_f/fuel_ef.to_f) * cpg.to_f
-  puts "Your journey will take #{time} hours and will cost £#{cost}"
+  if speed.to_f < 60 || speed.to_f == 60
+    time = dist.to_f/speed.to_f
+    cost = (dist.to_f/fuel_ef.to_f) * cpg.to_f
+    puts "Your journey will take #{time} hours and will cost £#{cost}"
+  elsif speed.to_f > 60
+    fuel_ef = fuel_ef.to_f - 2*(speed.to_f-60)
+    time = dist.to_f/speed.to_f
+    cost = (dist.to_f/fuel_ef.to_f) * cpg.to_f
+    puts "Your journey will take #{time} hours and will cost £#{cost}"
+  end
 end
 def calc
   puts "Welcome to Ruby Calculator!"
